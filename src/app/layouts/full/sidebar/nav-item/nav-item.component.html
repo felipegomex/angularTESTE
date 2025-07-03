@@ -2,7 +2,7 @@
 <div mat-subheader class="nav-caption">
   {{ item.navCap }}
 </div>
-} @if(!item.navCap && !item.external) {
+} @if(!item.navCap && !item.externalUrl) {
 <a mat-list-item (click)="onItemSelected(item)" [ngClass]="{
     activeMenu: item.route ? router.isActive(item.route, true) : false,
     expanded: expanded,
@@ -29,16 +29,18 @@
 
 <!-- external Link -->
 
-@if(!item.navCap && item.external) {
-<mat-list-item (click)="openExternalLink(item.route)" class="menu-list-item" target="_blank">
-  <i-tabler class="routeIcon" name="{{ item.iconName }}" matListItemIcon></i-tabler>
-  <span class="hide-menu">{{ item.displayName }} </span>
-  @if(item.chip) {
-  <span>
-    <span class="{{ item.chipClass }} p-x-8 p-y-4 item-chip f-w-500 rounded-pill ">{{ item.chipContent }}</span>
-  </span>
-  }
-</mat-list-item>
+@if(!item.navCap && item.externalUrl) {
+  <mat-list-item class="menu-list-item" (click)="openExternalLink(item.route)">
+    <i-tabler class="routeIcon" name="{{ item.iconName }}" matListItemIcon></i-tabler>
+    <span class="hide-menu">{{ item.displayName }}</span>
+    @if(item.chip) {
+      <span>
+        <span class="{{ item.chipClass }} p-x-8 p-y-4 item-chip f-w-500 rounded-pill">
+          {{ item.chipContent }}
+        </span>
+      </span>
+    }
+  </mat-list-item>
 }
 
 <!-- children -->

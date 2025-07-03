@@ -2,18 +2,60 @@ import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
   {
-    navCap: 'Home',
+    navCap: 'Início',
   },
   {
     displayName: 'Dashboard',
     iconName: 'layout-grid-add',
     route: '/dashboard',
   },
-
   {
-    navCap: 'Apps',
+    navCap: 'Páginas - Ferramentas',
+  },
+  {
+    displayName: 'Acessos - Clientes',
+    iconName: 'list',
+    route: '/acessos-clientes',
+  },
+  {
+    displayName: 'Cursos de Capacitação',
+    iconName: 'school',
+    route: '/cursos-capacitacao',
+  },
+  {
+    displayName: 'Contra - Senha',
+    iconName: 'circle-key',
+    route: '/contra-senha',
+  },
+  {
+    navCap: 'Links Externos',
+  },
+  {
+    displayName: 'Site JCA Soluções',
+    iconName: 'briefcase-2',
+    externalUrl: 'https://jca.vaiacelerar.com.br/',
+    target: '_blank',
   },
   
+   { 
+    displayName: 'Webmail',
+    iconName: 'Mail',
+    externalUrl: 'https://webmailpro.uol.com.br/#',
+    target: '_blank',
+  },
+
+  {
+    displayName: 'Cálculo Exato',
+    iconName: 'abacus',
+    externalUrl: 'https://calculoexato.com.br/',
+    target: '_blank',
+  },
+  {
+    externalUrl: 'https://www.4devs.com.br/',
+    displayName: '4Devs',
+    iconName: 'circle-dashed-number-4', 
+    target: '_blank',
+  },
   {
     navCap: 'Ui Components',
   },
@@ -53,9 +95,6 @@ export const navItems: NavItem[] = [
     route: '/ui-components/tables',
   },
   {
-    navCap: 'Pages',
-  },
-  {
     navCap: 'Extra',
   },
   {
@@ -70,7 +109,7 @@ export const navItems: NavItem[] = [
   },
   {
     navCap: 'Forms',
-  },
+  },  
 
   {
     navCap: 'Chart',
@@ -88,7 +127,7 @@ export const navItems: NavItem[] = [
         displayName: 'Login',
         iconName: 'point',
         route: '/authentication/login',
-      }
+      },
     ],
   },
   {
@@ -100,7 +139,7 @@ export const navItems: NavItem[] = [
         displayName: 'Register',
         iconName: 'point',
         route: '/authentication/register',
-      }
+      },
     ],
   },
 ];

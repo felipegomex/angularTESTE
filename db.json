@@ -1,0 +1,47 @@
+[
+ {
+  "id": "1",
+  "idEmpresa": "1",
+  "Empresa": "Meireles e Freitas Serviços de Cobrança ME",
+  "qtdeLicencas": "250",
+  "status": "Pendência",
+  "imagePath": "",
+  "": ""
+ },
+ {
+  "id": "2",
+  "idEmpresa": "4",
+  "Empresa": "Izzi Cobrança",
+  "qtdeLicencas": "250",
+  "status": "Sem pendência",
+  "imagePath": "",
+  "": ""
+ },
+ {
+  "id": "3",
+  "idEmpresa": "14",
+  "Empresa": "Fama",
+  "qtdeLicencas": "80",
+  "status": "Sem pendência",
+  "imagePath": "",
+  "": ""
+ },
+ {
+  "id": "4",
+  "idEmpresa": "52",
+  "Empresa": "SocialCont",
+  "qtdeLicencas": "10",
+  "status": "Sem pendência",
+  "imagePath": "",
+  "": ""
+ },
+ {
+  "id": "5",
+  "idEmpresa": "70",
+  "Empresa": "Innovatech",
+  "qtdeLicencas": "140",
+  "status": "Pendência",
+  "imagePath": "",
+  "": ""
+ }
+]

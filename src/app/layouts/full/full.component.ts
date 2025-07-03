@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { CoreService } from 'src/app/services/core.service';
-
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { NavService } from '../../services/nav.service';
@@ -113,5 +112,21 @@ export class FullComponent implements OnInit {
     this.options.sidenavOpened = isOpened;
     //this.settings.setOptions(this.options);
   }
+
+  
+toggleSidenav(): void {
+  this.options.sidenavOpened = !this.options.sidenavOpened;
+  this.settings.setOptions(this.options); // Persiste o estado se necessário
+  
+  // Se quiser forçar a atualização imediata (opcional)
+  if (this.sidenav) {
+    if (this.options.sidenavOpened) {
+      this.sidenav.open();
+    } else {
+      this.sidenav.close();
+    }
+  }
+}
+
 
 }

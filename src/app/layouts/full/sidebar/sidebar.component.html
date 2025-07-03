@@ -1,10 +1,27 @@
 <div class="d-flex align-items-center justify-content-between">
-  <div class="branding"><app-branding></app-branding></div>
+  <div class="branding">
+    <app-branding></app-branding>
+  </div>
 
-  @if(showToggle) {
-  <a href="javascript:void(0)" (click)="toggleMobileNav.emit()"
-    class="d-flex justify-content-center ng-star-inserted icon-40 align-items-center">
-    <i-tabler name="x" class="icon-20 d-flex"></i-tabler>
-  </a>
+  @if (showToggle) {
+    <a href="javascript:void(0)" (click)="toggleMobileNav.emit()"
+      class="d-flex justify-content-center ng-star-inserted icon-40 align-items-center">
+      <i-tabler name="x" class="icon-20 d-flex"></i-tabler>
+    </a>
   }
+
+  <!-- Iterar sobre os itens de navegação -->
+  <div *ngFor="let item of navItems">
+    <!-- Verificar se é um link externo -->
+    <a *ngIf="item.externalUrl  && !item.route" [href]="item.externalUrl" [target]="item.target">
+      <i class="material-icons">{{ item.iconName }}</i>
+      {{ item.displayName }}
+    </a>
+
+    <!-- Verificar se é um link interno -->
+    <a *ngIf="item.route && !item.externalUrl" [routerLink]="item.route">
+      <i class="material-icons">{{ item.iconName }}</i>
+      {{ item.displayName }}
+    </a>
+  </div>
 </div>

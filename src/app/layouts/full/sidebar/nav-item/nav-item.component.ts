@@ -61,10 +61,15 @@ export class AppNavItemComponent implements OnChanges {
     }
   }
 
-  openExternalLink(url: string): void {
-    if (url) {
-      window.open(url, '_blank');
-    }
+  openExternalLink(url: string) {
+    // Abre o link em uma nova aba
+    window.open(url, '_blank', 'noopener,noreferrer');
+    
+    // Alternativa mais segura:
+    // const win = window.open(url, '_blank');
+    // if (win) {
+    //   win.opener = null; // Prevenção de segurança contra tabnabbing
+    // }
   }
 
   onSubItemSelected(item: NavItem) {

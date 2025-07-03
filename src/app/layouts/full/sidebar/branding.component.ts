@@ -5,11 +5,12 @@ import { CoreService } from 'src/app/services/core.service';
   selector: 'app-branding',
   imports: [],
   template: `
-    <a href="/" class="logodark">
+    <a href="/dashboard" class="logodark">
       <img
-        src="./assets/images/logos/logo-JCA.svg"
+        src="./assets/images/logos/LOGO-JCA-2.png"
         class="align-middle m-2"
         alt="logo"
+         style="width: 60px; height: 60px;"
       />
     </a>
   `,

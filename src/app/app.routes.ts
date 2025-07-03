@@ -1,6 +1,10 @@
 import { Routes } from '@angular/router';
 import { BlankComponent } from './layouts/blank/blank.component';
-import { FullComponent } from './layouts/full/full.component';
+import { FullComponent } from './layouts/full/full.component'; // Componentes básicos ja importados pelo template
+import { CursosCapacitacaoComponent } from './cursos-capacitacao/cursos-capacitacao.component'; // Importando componente Cursos-Capacitacao
+import { AcessosClientesComponent } from './acessos-clientes/acessos-clientes.component'; // Importando componente Acessos-Clientes
+import { ContraSenhaComponent } from './contra-senha/contra-senha.component'; // Importando componente Contra-Senha
+
 
 export const routes: Routes = [
   {
@@ -29,6 +33,18 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./pages/extra/extra.routes').then((m) => m.ExtraRoutes),
       },
+      {
+        path: 'cursos-capacitacao', // Nova rota
+        component: CursosCapacitacaoComponent, // Componente da página de cursos
+      },
+      {
+        path: 'acessos-clientes', // Nova rota da página de acessos dos clientes
+        component: AcessosClientesComponent, // Componente da página de acessos dos clientes
+      },
+      {
+        path: 'contra-senha', // Nova rota da página de contra senha.
+        component: ContraSenhaComponent, // Componente da página de contra senha.
+      },
     ],
   },
   {
@@ -48,4 +64,4 @@ export const routes: Routes = [
     path: '**',
     redirectTo: 'authentication/error',
   },
-];
+]
