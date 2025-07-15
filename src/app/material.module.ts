@@ -53,6 +53,7 @@ import { MatTableModule } from '@angular/material/table';
 import { CursosCapacitacaoComponent } from './cursos-capacitacao/cursos-capacitacao.component'; //Importando material module da página de capacitação do curso
 import { AcessosClientesComponent } from './acessos-clientes/acessos-clientes.component'; //Importando material module da página de acessos dos clientes
 import { ContraSenhaComponent } from './contra-senha/contra-senha.component'; //Importando material module da página de contra senha.
+import { FormularioProgramacaoComponent } from './formulario-programacao/formulario-programacao.component'; //Importando material module da página de contra senha.
 
 
 @NgModule({

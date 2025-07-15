@@ -32,7 +32,8 @@ import { ClientesService } from './clientes.service';
       MatIconModule,
       MatTableModule,
       MatMenuModule,
-      MatButtonModule  ],
+      MatButtonModule ,
+      MaterialModule],
   styleUrls: ['./acessos-clientes.component.scss']
 })
 

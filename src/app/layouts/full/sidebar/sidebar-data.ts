@@ -27,20 +27,25 @@ export const navItems: NavItem[] = [
     iconName: 'circle-key',
     route: '/contra-senha',
   },
+   {
+    displayName: 'Formulário - Programação',
+    iconName: 'list-details',
+    route: '/formulario-programacao',
+  },
   {
     navCap: 'Links Externos',
   },
   {
     displayName: 'Site JCA Soluções',
     iconName: 'briefcase-2',
-    externalUrl: 'https://jca.vaiacelerar.com.br/',
+    externalUrl: 'http://jca.vaiacelerar.com.br/',
     target: '_blank',
   },
   
    { 
     displayName: 'Webmail',
     iconName: 'Mail',
-    externalUrl: 'https://webmailpro.uol.com.br/#',
+    externalUrl: 'https://email.uolhost.com.br/',
     target: '_blank',
   },
 
@@ -51,9 +56,9 @@ export const navItems: NavItem[] = [
     target: '_blank',
   },
   {
-    externalUrl: 'https://www.4devs.com.br/',
     displayName: '4Devs',
     iconName: 'circle-dashed-number-4', 
+    externalUrl: 'https://www.4devs.com.br/',
     target: '_blank',
   },
   {
@@ -98,25 +103,9 @@ export const navItems: NavItem[] = [
     navCap: 'Extra',
   },
   {
-    displayName: 'Icons',
-    iconName: 'mood-smile',
-    route: '/extra/icons',
-  },
-  {
     displayName: 'Sample Page',
     iconName: 'brand-dribbble',
     route: '/extra/sample-page',
-  },
-  {
-    navCap: 'Forms',
-  },  
-
-  {
-    navCap: 'Chart',
-  },
-
-  {
-    navCap: 'Auth',
   },
   {
     displayName: 'Login',

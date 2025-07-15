@@ -4,6 +4,7 @@ import { FullComponent } from './layouts/full/full.component'; // Componentes b�
 import { CursosCapacitacaoComponent } from './cursos-capacitacao/cursos-capacitacao.component'; // Importando componente Cursos-Capacitacao
 import { AcessosClientesComponent } from './acessos-clientes/acessos-clientes.component'; // Importando componente Acessos-Clientes
 import { ContraSenhaComponent } from './contra-senha/contra-senha.component'; // Importando componente Contra-Senha
+import { FormularioProgramacaoComponent } from './formulario-programacao/formulario-programacao.component'; // Importando componente Formulario-Programacao
 
 
 export const routes: Routes = [
@@ -44,6 +45,10 @@ export const routes: Routes = [
       {
         path: 'contra-senha', // Nova rota da página de contra senha.
         component: ContraSenhaComponent, // Componente da página de contra senha.
+      },
+        {
+        path: 'formulario-programacao', // Nova rota da página de formulário programação.
+        component: FormularioProgramacaoComponent, // Componente da página de formulário programação.
       },
     ],
   },

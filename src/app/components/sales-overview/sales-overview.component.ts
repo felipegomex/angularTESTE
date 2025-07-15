@@ -53,9 +53,9 @@ export class AppSalesOverviewComponent {
   public salesOverviewChart!: Partial<salesOverviewChart> | any;
 
   months: month[] = [
-    { value: 'mar', viewValue: 'Sep 2025' },
-    { value: 'apr', viewValue: 'Oct 2025' },
-    { value: 'june', viewValue: 'Nov 2025' },
+    { value: 'mar', viewValue: 'Junho 2025' },
+    { value: 'apr', viewValue: 'Julho 2025' },
+    { value: 'june', viewValue: 'Agosto 2025' },
   ];
 
 
