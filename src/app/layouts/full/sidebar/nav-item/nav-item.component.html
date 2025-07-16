@@ -30,7 +30,7 @@
 <!-- external Link -->
 
 @if(!item.navCap && item.externalUrl) {
-  <mat-list-item class="menu-list-item" (click)="openExternalLink(item.route)">
+  <mat-list-item class="menu-list-item" (click)="openExternalLink(item.externalUrl)">
     <i-tabler class="routeIcon" name="{{ item.iconName }}" matListItemIcon></i-tabler>
     <span class="hide-menu">{{ item.displayName }}</span>
     @if(item.chip) {
