@@ -54,6 +54,7 @@ import { CursosCapacitacaoComponent } from './cursos-capacitacao/cursos-capacita
 import { AcessosClientesComponent } from './acessos-clientes/acessos-clientes.component'; //Importando material module da página de acessos dos clientes
 import { ContraSenhaComponent } from './contra-senha/contra-senha.component'; //Importando material module da página de contra senha.
 import { FormularioProgramacaoComponent } from './formulario-programacao/formulario-programacao.component'; //Importando material module da página de contra senha.
+import { DocumentacaoLayoutComponent } from './documentacao/documentacao-layout/documentacao-layout.component'; // Importando componente Documentacao-Layout
 
 
 @NgModule({

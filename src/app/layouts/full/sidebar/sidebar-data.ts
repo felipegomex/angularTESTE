@@ -16,12 +16,6 @@ export const navItems: NavItem[] = [
   },
 
   {
-    displayName: 'Acessos - Clientes',
-    iconName: 'list',
-    route: '/acessos-clientes',
-  },
-
-  {
     displayName: 'Cursos de Capacitação',
     iconName: 'school',
     route: '/cursos-capacitacao',
@@ -43,10 +37,10 @@ export const navItems: NavItem[] = [
     navCap: 'Documentações',
   },
 
-{
+  {
     displayName: 'Acessos - Clientes',
     iconName: 'logic-or',
-    route: '/documentacao/documentacao-acessos',
+    route: '/acessos-clientes',
   },
 
   {
@@ -125,14 +119,14 @@ export const navItems: NavItem[] = [
     target: '_blank',
   },
 
-   {
+  {
     displayName: 'DeepSeek',
     iconName: 'brand-openai', 
     externalUrl: 'https://chat.deepseek.com/',
     target: '_blank',
   },
 
-   {
+  {
     displayName: 'Discord',
     iconName: 'brand-discord', 
     externalUrl: 'https://chat.deepseek.com/',

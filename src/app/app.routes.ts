@@ -35,6 +35,11 @@ export const routes: Routes = [
           import('./pages/extra/extra.routes').then((m) => m.ExtraRoutes),
       },
       {
+        path: 'documentacao',
+        loadChildren: () =>
+          import('./documentacao/documentacao.routes').then((m) => m.DocumentacaoRoutes),
+      },
+      {
         path: 'cursos-capacitacao', // Nova rota
         component: CursosCapacitacaoComponent, // Componente da página de cursos
       },
@@ -42,11 +47,13 @@ export const routes: Routes = [
         path: 'acessos-clientes', // Nova rota da página de acessos dos clientes
         component: AcessosClientesComponent, // Componente da página de acessos dos clientes
       },
+
       {
         path: 'contra-senha', // Nova rota da página de contra senha.
         component: ContraSenhaComponent, // Componente da página de contra senha.
       },
-        {
+
+      {
         path: 'formulario-programacao', // Nova rota da página de formulário programação.
         component: FormularioProgramacaoComponent, // Componente da página de formulário programação.
       },
