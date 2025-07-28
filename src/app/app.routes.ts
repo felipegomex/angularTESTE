@@ -5,6 +5,7 @@ import { CursosCapacitacaoComponent } from './cursos-capacitacao/cursos-capacita
 import { AcessosClientesComponent } from './acessos-clientes/acessos-clientes.component'; // Importando componente Acessos-Clientes
 import { ContraSenhaComponent } from './contra-senha/contra-senha.component'; // Importando componente Contra-Senha
 import { FormularioProgramacaoComponent } from './formulario-programacao/formulario-programacao.component'; // Importando componente Formulario-Programacao
+import { ChamadosComponent } from './components/chamados/chamados.component'; // Importando componente Chamados
 
 
 export const routes: Routes = [
@@ -17,11 +18,17 @@ export const routes: Routes = [
         redirectTo: '/dashboard',
         pathMatch: 'full',
       },
+      
       {
         path: 'dashboard',
         loadChildren: () =>
           import('./pages/pages.routes').then((m) => m.PagesRoutes),
       },
+       {
+        path: 'chamados', // Nova rota
+        component: ChamadosComponent, // Componente da página de chamados
+      },
+
       {
         path: 'ui-components',
         loadChildren: () =>
@@ -29,20 +36,36 @@ export const routes: Routes = [
             (m) => m.UiComponentsRoutes
           ),
       },
+
       {
         path: 'extra',
         loadChildren: () =>
           import('./pages/extra/extra.routes').then((m) => m.ExtraRoutes),
       },
+
       {
         path: 'documentacao',
         loadChildren: () =>
           import('./documentacao/documentacao.routes').then((m) => m.DocumentacaoRoutes),
       },
+
+      {
+        path: 'social',
+        loadChildren: () =>
+          import('./social/social.routes').then((m) => m.SocialRoutes),
+      },
+
+       {
+        path: 'jca',
+        loadChildren: () =>
+          import('./jca/jca.routes').then((m) => m.JcaRoutes),
+      },
+
       {
         path: 'cursos-capacitacao', // Nova rota
         component: CursosCapacitacaoComponent, // Componente da página de cursos
       },
+
       {
         path: 'acessos-clientes', // Nova rota da página de acessos dos clientes
         component: AcessosClientesComponent, // Componente da página de acessos dos clientes

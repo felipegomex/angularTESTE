@@ -6,7 +6,7 @@
   @if (showToggle) {
     <a href="javascript:void(0)" (click)="toggleMobileNav.emit()"
       class="d-flex justify-content-center ng-star-inserted icon-40 align-items-center">
-      <i-tabler name="x" class="icon-20 d-flex"></i-tabler>
+      <i-tabler name="menu" class="icon-40 d-flex"></i-tabler>
     </a>
   }
 
@@ -21,7 +21,7 @@
     <!-- Verificar se é um link interno -->
     <a *ngIf="item.route && !item.externalUrl" [routerLink]="item.route">
       <i class="material-icons">{{ item.iconName }}</i>
-      {{ item.displayName }}
+     
     </a>
   </div>
 </div>

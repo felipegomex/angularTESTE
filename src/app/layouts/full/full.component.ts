@@ -14,6 +14,7 @@ import { TablerIconsModule } from 'angular-tabler-icons';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppNavItemComponent } from './sidebar/nav-item/nav-item.component';
+import { BrandingComponent } from './sidebar/branding.component';
 import { navItems } from './sidebar/sidebar-data';
 import { AppTopstripComponent } from './top-strip/topstrip.component';
 
@@ -24,6 +25,7 @@ const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
 
 @Component({
   selector: 'app-full',
+    standalone: true,
   imports: [
     RouterModule,
     AppNavItemComponent,
@@ -33,7 +35,12 @@ const TABLET_VIEW = 'screen and (min-width: 769px) and (max-width: 1024px)';
     NgScrollbarModule,
     TablerIconsModule,
     HeaderComponent,
-    AppTopstripComponent
+    AppTopstripComponent,
+    CommonModule,
+    RouterModule,
+    BrandingComponent, 
+    TablerIconsModule, 
+    MaterialModule,
   ],
   templateUrl: './full.component.html',
   styleUrls: [],

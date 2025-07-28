@@ -11,8 +11,20 @@ export const navItems: NavItem[] = [
     route: '/dashboard',
   },
 
+   {
+    displayName: 'Chamados',
+    iconName: 'clipboard-list',
+    route: '/chamados',
+  },
+
   {
     navCap: 'Páginas - Ferramentas',
+  },
+
+  {
+    displayName: 'Acessos - Clientes',
+    iconName: 'logic-or',
+    route: '/acessos-clientes',
   },
 
   {
@@ -35,12 +47,6 @@ export const navItems: NavItem[] = [
 
   {
     navCap: 'Documentações',
-  },
-
-  {
-    displayName: 'Acessos - Clientes',
-    iconName: 'logic-or',
-    route: '/acessos-clientes',
   },
 
   {
@@ -79,14 +85,14 @@ export const navItems: NavItem[] = [
 
   {
     displayName: 'Chamados - JCA Externo',
-    iconName: 'device-ipad-share',
+    iconName: 'link',
     externalUrl: 'http://187.91.168.50:88/Conta/Login?ReturnUrl=%2f',
     target: '_blank',
   },
 
 {
     displayName: 'Chamados - JCA Interno',
-    iconName: 'device-ipad-share',
+    iconName: 'link',
     externalUrl: 'http://192.168.2.2:88/Conta/Login?ReturnUrl=%2f',
     target: '_blank',
   },
@@ -140,35 +146,35 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Meu Perfil',
     iconName: 'user-edit',
-    route: '/meu-perfil',
+    route: '/social/meu-perfil',
   },
 
   {
     displayName: 'Social - JCA',
     iconName: 'users-group',
-    route: '/membros-jca',
+    route: '/social/membros-jca',
     children: [
       {
         displayName: 'Equipe',
         iconName: 'users',
-        route: '/social-equipe',
+        route: '/social/equipe',
       },
       {
         displayName: 'Setores',
         iconName: 'align-box-left-stretch',
-        route: '/social-setores',
+        route: '/social/setores',
       },
     ],
       },
       {
         displayName: 'Sobre a JCA',
         iconName: 'info-square-rounded',
-        route: '/social-sobre',
+        route: '/jca/sobre-jca',
       },
       {
         displayName: 'Produtos JCA',
         iconName: 'shopping-cart',
-        route: '/social-produtos',
+        route: '/jca/produtos-jca',
       },
   {
     navCap: 'Ui Components',
