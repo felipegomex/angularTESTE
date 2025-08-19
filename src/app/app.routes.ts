@@ -6,6 +6,7 @@ import { AcessosClientesComponent } from './acessos-clientes/acessos-clientes.co
 import { ContraSenhaComponent } from './contra-senha/contra-senha.component'; // Importando componente Contra-Senha
 import { FormularioProgramacaoComponent } from './formulario-programacao/formulario-programacao.component'; // Importando componente Formulario-Programacao
 import { ChamadosComponent } from './components/chamados/chamados.component'; // Importando componente Chamados
+import { MonitoramentoImportacoesComponent } from './monitoramento-importacoes/monitoramento-importacoes.component'; // Importando componente Monitoramento-Importacoes
 
 
 export const routes: Routes = [
@@ -79,6 +80,11 @@ export const routes: Routes = [
       {
         path: 'formulario-programacao', // Nova rota da página de formulário programação.
         component: FormularioProgramacaoComponent, // Componente da página de formulário programação.
+      },
+
+      {
+        path: 'monitoramento-importacoes', // Nova rota da página de monitoramento de importações
+        component: MonitoramentoImportacoesComponent, // Componente da página de monitoramento de importações
       },
     ],
   },

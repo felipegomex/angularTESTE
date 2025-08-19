@@ -18,6 +18,12 @@ export const navItems: NavItem[] = [
   },
 
   {
+    displayName: 'Monitoramento',
+    iconName: 'activity',
+    route: '/monitoramento-importacoes',
+  },
+
+  {
     navCap: 'Páginas - Ferramentas',
   },
 

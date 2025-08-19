@@ -3,186 +3,285 @@
 <!-- ============================================================== -->
 <mat-card class="cardWithShadow">
   <mat-card-content>
-   <!--<mat-card-title class="text-center">Cursos de Capacitação - JCA Soluções</mat-card-title>
-    <mat-card-subtitle class="text-center">Lista de cursos organizados por área de conhecimento</mat-card-subtitle>--> 
-    <!-- Conteúdo da Página -->
-    <div class="container mt-4">
-      <!-- Cabeçalho -->
-      <div class="text-center mb-4 p-4 bg-primary text-white rounded shadow">
-        <br>
-        <h1 class="display-5">Cursos de Capacitação - JCA Soluções</h1>
-        <p class="lead">Lista de cursos organizados por área de conhecimento</p>
-      </div>
-<br>
+    <!-- Cabeçalho -->
+    <div class="text-center mb-4 p-4 bg-primary text-white rounded shadow">
+      <h1 class="display-5">Cursos de Capacitação - JCA Soluções</h1>
+      <p class="lead">Recursos educacionais organizados por área de conhecimento</p>
+    </div>
 
-       <div class="m-t-12">
-     <button mat-stroked-button color="primary" class="m-r-8">Editar</button>   
-     <button mat-stroked-button color="primary" class="m-r-8">Adicionar</button>
-     <button mat-stroked-button color="warning">Excluir</button>
-</div>
-<br>
-        <!-- Cursos de Análise de Dados e Banco de Dados -->
-      <div class="mb-4 p-4 bg-white border rounded shadow-sm">
-        <h2 class="mb-3"><i class="fas fa-database mr-2"></i>1. Análise de Dados e Banco de Dados</h2>
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <strong>SQL para Análise de Dados: Do básico ao avançado</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Udemy<br>
-            <a href="https://www.udemy.com/course/sql-para-analise-de-dados/?couponCode=8971D1DFBD0DE500B7FF" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-          <li class="mb-3">
-            <strong>Google Data Analytics Professional Certificate</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Coursera (Google)<br>
-            <a href="https://lnkd.in/dhwtVMDZ" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-        </ul>
-      </div>
+    <!-- Botões de Ação -->
+    <div class="m-t-12 mb-4">
+      <button mat-stroked-button color="primary" class="m-r-8">
+        <mat-icon>edit</mat-icon> Editar
+      </button>   
+      <button mat-stroked-button color="primary" class="m-r-8">
+        <mat-icon>add</mat-icon> Adicionar
+      </button>
+      <button mat-stroked-button color="warn">
+        <mat-icon>delete</mat-icon> Excluir
+      </button>
+    </div>
 
-      <!-- Cursos de Programação e Desenvolvimento -->
-      <div class="mb-4 p-4 bg-white border rounded shadow-sm">
-        <h2 class="mb-3"><i class="fas fa-code mr-2"></i>2. Programação e Desenvolvimento</h2>
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <strong>Crash Course on Python</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Coursera (Google)<br>
-            <a href="https://lnkd.in/dT55BxfP" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-          <li class="mb-3">
-            <strong>Cursos DEV SAMURAI</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Dev Samurai<br>
-            <a href="https://class.devsamurai.com.br/" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-        </ul>
-      </div>
+    <!-- Seção 1: Plataformas Gratuitas -->
+    <mat-card class="mb-4">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon class="mr-2">school</mat-icon>
+          Plataformas Gratuitas de Ensino
+        </mat-card-title>
+        <mat-card-subtitle>Acesso gratuito a cursos de qualidade</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-3" *ngFor="let plataforma of plataformasGratuitas">
+            <mat-card class="h-100 curso-card">
+              <mat-card-header>
+                <mat-card-title class="curso-titulo">{{ plataforma.nome }}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p class="curso-descricao">{{ plataforma.descricao }}</p>
+                <div *ngIf="plataforma.observacao" class="alert alert-warning">
+                  <mat-icon>warning</mat-icon>
+                  {{ plataforma.observacao }}
+                </div>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="abrirLink(plataforma.url)">
+                  <mat-icon>launch</mat-icon>
+                  Acessar Plataforma
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-      <!-- Cursos de Inteligência Artificial e Modelos de Linguagem -->
-      <div class="mb-4 p-4 bg-white border rounded shadow-sm">
-        <h2 class="mb-3"><i class="fas fa-brain mr-2"></i>3. Inteligência Artificial e Modelos de Linguagem</h2>
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <strong>Introduction to Generative AI</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Coursera (Google)<br>
-            <a href="https://lnkd.in/dip3WvAU" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-          <li class="mb-3">
-            <strong>Introduction to Large Language Models</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Coursera (Google)<br>
-            <a href="https://lnkd.in/dMym3JTQ" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-        </ul>
-      </div>
+    <!-- Seção 2: Cursos Dev Samurai -->
+    <mat-card class="mb-4">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon class="mr-2">code</mat-icon>
+          Cursos Dev Samurai
+        </mat-card-title>
+        <mat-card-subtitle>Cursos específicos de desenvolvimento web</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="alert alert-info mb-3">
+          <mat-icon>info</mat-icon>
+          <strong>Atenção:</strong> Disponível apenas até o fim do ano
+        </div>
+        
+        <div class="row">
+          <!-- Frontend -->
+          <div class="col-md-6 mb-4">
+            <h4><mat-icon>web</mat-icon> Frontend</h4>
+            <mat-list>
+              <mat-list-item *ngFor="let curso of cursosDevSamurai.slice(2, 7)">
+                <mat-icon matListItemIcon>play_circle_outline</mat-icon>
+                <div matListItemTitle>{{ curso.nome }}</div>
+                <button mat-icon-button (click)="abrirLink(curso.url)" matListItemMeta>
+                  <mat-icon>launch</mat-icon>
+                </button>
+              </mat-list-item>
+            </mat-list>
+          </div>
 
-      <!-- Cursos de Gestão e Produtividade -->
-      <div class="mb-4 p-4 bg-white border rounded shadow-sm">
-        <h2 class="mb-3"><i class="fas fa-tasks mr-2"></i>4. Gestão e Produtividade</h2>
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <strong>Google Project Management: Professional Certificate</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Coursera (Google)<br>
-            <a href="https://lnkd.in/dSVg_gUX" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-          <li class="mb-3">
-            <strong>Agile Project Management</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Coursera (Google)<br>
-            <a href="https://lnkd.in/dYV_w849" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-          <li class="mb-3">
-            <strong>Gestão do Tempo e Produtividade</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: IFMG<br>
-            <a href="https://lnkd.in/dM8_e7VG" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-        </ul>
-      </div>
+          <!-- Backend e Lógica -->
+          <div class="col-md-6 mb-4">
+            <h4><mat-icon>storage</mat-icon> Backend & Lógica</h4>
+            <mat-list>
+              <mat-list-item *ngFor="let curso of getBackendCursos()">
+                <mat-icon matListItemIcon>play_circle_outline</mat-icon>
+                <div matListItemTitle>{{ curso?.nome }}</div>
+                <button mat-icon-button (click)="abrirLink(curso?.url || '')" matListItemMeta>
+                  <mat-icon>launch</mat-icon>
+                </button>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-      <!-- Cursos de Ferramentas de Escritório -->
-      <div class="mb-4 p-4 bg-white border rounded shadow-sm">
-        <h2 class="mb-3"><i class="fas fa-file-excel mr-2"></i>5. Ferramentas de Escritório</h2>
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <strong>Excel 2016: Do Básico ao Avançado</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Fundação Bradesco - Escola Virtual<br>
-            <a href="https://lnkd.in/dW2GpV4f" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-        </ul>
-      </div>
+    <!-- Seção 3: Cursos de Banco de Dados -->
+    <mat-card class="mb-4">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon class="mr-2">storage</mat-icon>
+          Cursos de Banco de Dados
+        </mat-card-title>
+        <mat-card-subtitle>Aprenda SQL e gerenciamento de dados</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6 mb-3" *ngFor="let curso of cursosBancoDados">
+            <mat-card class="h-100 curso-card">
+              <mat-card-header>
+                <mat-card-title class="curso-titulo">{{ curso?.nome }}</mat-card-title>
+                <mat-card-subtitle>{{ curso?.plataforma }}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p class="curso-descricao">{{ curso?.descricao }}</p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="abrirLink(curso?.url || '')">
+                  <mat-icon>play_arrow</mat-icon>
+                  Assistir Curso
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+        
+        <div class="alert alert-info">
+          <mat-icon>info</mat-icon>
+          <strong>Curso Guilherme:</strong> Buscar informações junto ao instrutor
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-      <!-- Cursos de Comunicação e Rotinas Administrativas -->
-      <div class="mb-4 p-4 bg-white border rounded shadow-sm">
-        <h2 class="mb-3"><i class="fas fa-comments mr-2"></i>6. Comunicação e Rotinas Administrativas</h2>
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <strong>Comunicação Empresarial</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Fundação Bradesco - Escola Virtual<br>
-            <a href="https://lnkd.in/dc_HxQci" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-          <li class="mb-3">
-            <strong>Introdução às Rotinas Administrativas</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: IFRS<br>
-            <a href="https://lnkd.in/dzQp6ngX" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-        </ul>
-      </div>
+    <!-- Seção 4: Recursos sobre APIs -->
+    <mat-card class="mb-4">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon class="mr-2">api</mat-icon>
+          Definições e Conceitos de API
+        </mat-card-title>
+        <mat-card-subtitle>Materiais educativos sobre APIs, REST e WebServices</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let categoria of recursosAPI" class="mb-4">
+          <h4>
+            <mat-icon>{{ categoria?.icone }}</mat-icon>
+            {{ categoria?.titulo }}
+          </h4>
 
-      <!-- Cursos de Proteção de Dados e Tomada de Decisão -->
-      <div class="mb-4 p-4 bg-white border rounded shadow-sm">
-        <h2 class="mb-3"><i class="fas fa-shield-alt mr-2"></i>7. Proteção de Dados e Tomada de Decisão</h2>
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <strong>Lei Geral de Proteção de Dados (LGPD)</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Capacita Coop<br>
-            <a href="https://capacita.coop.br/cursos-studion/lei-geral-de-protecao-de-dados-lgpd" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-          <li class="mb-3">
-            <strong>Resolução de Problemas e Tomada de Decisão</strong><br>
-            <i class="fas fa-link mr-1"></i>Plataforma: Capacita Coop<br>
-            <a href="https://capacita.coop.br/cursos-studion/resolucao-de-problemas-e-tomada-de-decisao" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Curso</a>
-          </li>
-        </ul>
-      </div>
+          <div class="row">
+            <div class="col-md-6 col-lg-4 mb-3" *ngFor="let recurso of categoria?.recursos">
+              <mat-card class="h-100 recurso-card">
+                <mat-card-header>
+                  <mat-card-title class="recurso-titulo">{{ recurso?.nome }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <p class="recurso-descricao">{{ recurso?.descricao }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-raised-button color="accent" (click)="abrirLink(recurso?.url || '')">
+                    <mat-icon *ngIf="categoria?.icone === 'play_circle_filled'">play_arrow</mat-icon>
+                    <mat-icon *ngIf="categoria?.icone === 'article'">article</mat-icon>
+                    {{ categoria?.icone === 'play_circle_filled' ? 'Assistir' : 'Ler Artigo' }}
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-      <!-- Plataformas de Cursos Online Gratuitos -->
-      <div class="mb-4 p-4 bg-white border rounded shadow-sm">
-        <h2 class="mb-3"><i class="fas fa-globe mr-2"></i>8. Plataformas de Cursos Online Gratuitos</h2>
-        <ul class="list-unstyled">
-          <li class="mb-3">
-            <strong>Coursera</strong><br>
-            <i class="fas fa-link mr-1"></i>Link: <a href="https://www.coursera.org/" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Plataforma</a>
-          </li>
-          <li class="mb-3">
-            <strong>edX</strong><br>
-            <i class="fas fa-link mr-1"></i>Link: <a href="https://www.edx.org/es" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Plataforma</a>
-          </li>
-          <li class="mb-3">
-            <strong>Udemy</strong><br>
-            <i class="fas fa-link mr-1"></i>Link: <a href="https://lnkd.in/dCuiXBxK" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Plataforma</a>
-          </li>
-          <li class="mb-3">
-            <strong>Alison</strong><br>
-            <i class="fas fa-link mr-1"></i>Link: <a href="https://alison.com/pt-BR" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Plataforma</a>
-          </li>
-          <li class="mb-3">
-            <strong>Google Ateliê Digital</strong><br>
-            <i class="fas fa-link mr-1"></i>Link: <a href="https://lnkd.in/dXQyK5rw" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Plataforma</a>
-          </li>
-          <li class="mb-3">
-            <strong>Fundacao Getúlio Vargas (FGV)</strong><br>
-            <i class="fas fa-link mr-1"></i>Link: <a href="https://lnkd.in/dDEPcw57" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Plataforma</a>
-          </li>
-          <li class="mb-3">
-            <strong>SEBRAE</strong><br>
-            <i class="fas fa-link mr-1"></i>Link: <a href="https://lnkd.in/d82WaUjS" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Plataforma</a>
-          </li>
-          <li class="mb-3">
-            <strong>Cursos IFMG</strong><br>
-            <i class="fas fa-link mr-1"></i>Link: <a href="https://mais.ifmg.edu.br/maisifmg/course/index.php?categoryid=10" target="_blank" class="btn btn-primary btn-sm mt-2">Acessar Plataforma</a>
-          </li>
-        </ul>
-      </div>
+    <!-- Seção 5: Cursos Existentes (mantidos do template original) -->
+    <mat-card class="mb-4">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon class="mr-2">library_books</mat-icon>
+          Outros Cursos Recomendados
+        </mat-card-title>
+        <mat-card-subtitle>Cursos adicionais por área de conhecimento</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <!-- Análise de Dados -->
+        <div class="mb-4 p-4 bg-white border rounded shadow-sm">
+          <h4 class="mb-3">
+            <mat-icon class="mr-2">analytics</mat-icon>
+            Análise de Dados e Business Intelligence
+          </h4>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon matListItemIcon>school</mat-icon>
+              <div matListItemTitle>SQL para Análise de Dados: Do básico ao avançado</div>
+              <div matListItemLine>Plataforma: Udemy</div>
+              <button mat-raised-button color="primary" matListItemMeta 
+                      (click)="abrirLink('https://www.udemy.com/course/sql-para-analise-de-dados/?couponCode=8971D1DFBD0DE500B7FF')">
+                Acessar
+              </button>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon matListItemIcon>school</mat-icon>
+              <div matListItemTitle>Google Data Analytics Professional Certificate</div>
+              <div matListItemLine>Plataforma: Coursera (Google)</div>
+              <button mat-raised-button color="primary" matListItemMeta 
+                      (click)="abrirLink('https://lnkd.in/dhwtVMDZ')">
+                Acessar
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </div>
 
-      <!-- Rodapé -->
-      <div class="text-center p-3 bg-light border rounded shadow-sm">
-      <p class="mb-0">&copy; {{ getCurrentYear() }} JCA Soluções. Todos os direitos reservados.</p>
-      </div>
+        <!-- Inteligência Artificial -->
+        <div class="mb-4 p-4 bg-white border rounded shadow-sm">
+          <h4 class="mb-3">
+            <mat-icon class="mr-2">psychology</mat-icon>
+            Inteligência Artificial e Machine Learning
+          </h4>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon matListItemIcon>school</mat-icon>
+              <div matListItemTitle>Introduction to Generative AI</div>
+              <div matListItemLine>Plataforma: Coursera (Google)</div>
+              <button mat-raised-button color="primary" matListItemMeta 
+                      (click)="abrirLink('https://lnkd.in/dip3WvAU')">
+                Acessar
+              </button>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon matListItemIcon>school</mat-icon>
+              <div matListItemTitle>Introduction to Large Language Models</div>
+              <div matListItemLine>Plataforma: Coursera (Google)</div>
+              <button mat-raised-button color="primary" matListItemMeta 
+                      (click)="abrirLink('https://lnkd.in/dMym3JTQ')">
+                Acessar
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </div>
+
+        <!-- Gestão e Produtividade -->
+        <div class="mb-4 p-4 bg-white border rounded shadow-sm">
+          <h4 class="mb-3">
+            <mat-icon class="mr-2">business</mat-icon>
+            Gestão e Produtividade
+          </h4>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon matListItemIcon>school</mat-icon>
+              <div matListItemTitle>Google Project Management: Professional Certificate</div>
+              <div matListItemLine>Plataforma: Coursera (Google)</div>
+              <button mat-raised-button color="primary" matListItemMeta 
+                      (click)="abrirLink('https://lnkd.in/dSVg_gUX')">
+                Acessar
+              </button>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon matListItemIcon>school</mat-icon>
+              <div matListItemTitle>Agile Project Management</div>
+              <div matListItemLine>Plataforma: Coursera (Google)</div>
+              <button mat-raised-button color="primary" matListItemMeta 
+                      (click)="abrirLink('https://lnkd.in/dYV_w849')">
+                Acessar
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Rodapé -->
+    <div class="text-center p-3 bg-light border rounded shadow-sm">
+      <p class="mb-0">
+        <mat-icon>copyright</mat-icon>
+        {{ getCurrentYear() }} JCA Soluções. Todos os direitos reservados.
+      </p>
     </div>
   </mat-card-content>
 </mat-card>
