@@ -1,0 +1,195 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "PageSuporte",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Operador": {
+      "get": {
+        "tags": [
+          "Operador"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Operador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/criarOperador"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/criarOperador"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/criarOperador"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Operador"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/editarOperador"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/editarOperador"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/editarOperador"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Operador"
+        ],
+        "parameters": [
+          {
+            "name": "operador_id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Operador/OperadorNome": {
+      "get": {
+        "tags": [
+          "Operador"
+        ],
+        "parameters": [
+          {
+            "name": "operadorNome",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "criarOperador": {
+        "type": "object",
+        "properties": {
+          "operador_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "senha": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "se_Admin": {
+            "type": "boolean"
+          },
+          "se_Ativo": {
+            "type": "string"
+          },
+          "usuario_Inclusao": {
+            "type": "string",
+            "nullable": true
+          },
+          "perfil_Id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "editarOperador": {
+        "type": "object",
+        "properties": {
+          "operador_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "senha": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "se_Admin": {
+            "type": "boolean"
+          },
+          "se_Ativo": {
+            "type": "string"
+          },
+          "perfil_Skin": {
+            "type": "string",
+            "nullable": true
+          },
+          "perfil_Id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

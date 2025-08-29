@@ -1,0 +1,6 @@
+@PageSuporte_HostAddress = http://localhost:5199
+
+GET {{PageSuporte_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

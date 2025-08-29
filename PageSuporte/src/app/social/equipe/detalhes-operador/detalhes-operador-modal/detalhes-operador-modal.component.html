@@ -1,0 +1,56 @@
+<div class="modal-content">
+  <h2 mat-dialog-title>Detalhes do Operador</h2>
+  
+  <mat-dialog-content>
+    <div class="info-grid">
+      <div class="info-item">
+        <strong>Operador:</strong> {{ data.operador_ID }}
+      </div>
+      <div class="info-item">
+        <strong>Nome:</strong> {{ data.nome }}
+      </div>
+      <div class="info-item">
+        <strong>Perfil:</strong> 
+           {{ 
+             data.perfil_Id === 'S' ? 'Suporte' : 
+             data.perfil_Id === 'A' ? 'Diretoria' : 
+             data.perfil_Id === 'D' ? 'Desenvolvimento' : 
+             data.perfil_Id === 'P' ? '?' : 
+             data.perfil_Id === 'F' ? 'Financeiro' : 
+             data.perfil_Id 
+           }}
+       </div>
+      <div class="info-item">
+        <strong>Email:</strong> {{ data.email }}
+      </div>
+      <div class="info-item">
+        <strong>Senha:</strong> {{ data.senha }}
+      </div>
+      <div class="info-item">
+        <strong>Administrador:</strong> {{ data.se_Admin ? 'Sim' : 'Não' }}
+      </div>
+      <div class="info-item">
+        <strong>Ativo:</strong> {{ data.se_Ativo === 'S' ? 'Sim' : 'Não' }}
+      </div>
+      <div class="info-item">
+        <strong>Último Acesso:</strong> {{ data.data_Ultimo_Acesso | date:'dd/MM/yyyy HH:mm' }}
+      </div>
+      <div class="info-item">
+        <strong>Usuário Inclusão:</strong> {{ data.usuario_Inclusao }}
+      </div>
+      <div class="info-item">
+        <strong>Data Inclusão:</strong> {{ data.data_Inclusao | date:'dd/MM/yyyy HH:mm' }}
+      </div>
+      <div class="info-item">
+        <strong>Usuário Alteração:</strong> {{ data.usuario_Alteracao }}
+      </div>
+      <div class="info-item">
+        <strong>Data Alteração:</strong> {{ data.data_Alteracao| date:'dd/MM/yyyy HH:mm' }}
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Fechar</button>
+  </mat-dialog-actions>
+</div>

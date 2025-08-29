@@ -1,0 +1,76 @@
+[
+  {
+    "ContainingType": "PageSuporte.Controllers.OperadorController",
+    "Method": "BuscarOperadores",
+    "RelativePath": "api/Operador",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PageSuporte.Controllers.OperadorController",
+    "Method": "CriarOperador",
+    "RelativePath": "api/Operador",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "criarOperador",
+        "Type": "PageSuporte.Models.criarOperador",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PageSuporte.Controllers.OperadorController",
+    "Method": "EditarOperador",
+    "RelativePath": "api/Operador",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "editarOperador",
+        "Type": "PageSuporte.Models.editarOperador",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PageSuporte.Controllers.OperadorController",
+    "Method": "DeletarOperador",
+    "RelativePath": "api/Operador",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "operador_id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PageSuporte.Controllers.OperadorController",
+    "Method": "BuscarOperadorbyName",
+    "RelativePath": "api/Operador/OperadorNome",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "operadorNome",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
