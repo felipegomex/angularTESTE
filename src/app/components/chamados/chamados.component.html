@@ -1,1 +1,178 @@
-<p>chamados works!</p>
+<div class="chamados-container">
+  <!-- Cabeçalho -->
+  <mat-card>
+    <mat-card-content>
+      <!-- Filtros -->
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon class="me-2">filter_list</mat-icon>
+            Filtros de Pesquisa
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="row filter-row">
+
+            <!-- Data Abertura Início -->
+            <div class="col-md-2 filter-field">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Data Abert.Início</mat-label>
+                <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="filtroDataAberturaInicio" (dateChange)="aplicarFiltros()">
+                <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicio></mat-datepicker>
+              </mat-form-field>
+            </div>
+          
+            <!-- Data Abertura Fim -->
+            <div class="col-md-2 filter-field">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Data Abert.Fim</mat-label>
+                <input matInput [matDatepicker]="pickerFim" [(ngModel)]="filtroDataAberturaFim" (dateChange)="aplicarFiltros()">
+                <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+                <mat-datepicker #pickerFim></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <!-- Data Fechamento Início -->
+            <div class="col-md-2 filter-field">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Data Fecham.Início</mat-label>
+                <input matInput [matDatepicker]="pickerInicio" [(ngModel)]="filtroDataFechamentoInicio" (dateChange)="aplicarFiltros()">
+                <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicio></mat-datepicker>
+              </mat-form-field>
+            </div>
+          
+            <!-- Data Fechamento Fim -->
+            <div class="col-md-2 filter-field">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Data Fecham.Fim</mat-label>
+                <input matInput [matDatepicker]="pickerFim" [(ngModel)]="filtroDataFechamentoFim" (dateChange)="aplicarFiltros()">
+                <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+                <mat-datepicker #pickerFim></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <!-- Status -->
+            <div class="col-md-2 filter-field">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Status</mat-label>
+                <mat-select [(value)]="filtroStatus" (selectionChange)="aplicarFiltros()">
+                  <mat-option value="">Todos</mat-option>
+                  <mat-option value="A">Abertos</mat-option>
+                  <mat-option value="F">Fechados</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- Setor -->
+            <div class="col-md-2 filter-field">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Setor</mat-label>
+                <mat-select [(value)]="filtroSetor" (selectionChange)="aplicarFiltros()">
+                  <mat-option value="">Todos</mat-option>
+                  <mat-option value="S">Suporte</mat-option>
+                  <mat-option value="D">Desenvolvimento</mat-option>
+                  <mat-option value="A">Diretoria</mat-option>
+                  <mat-option value="F">Financeiro</mat-option>
+                  <mat-option value="null">Nenhum</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <!-- Filtro Texto -->
+            <div class="col-md-2">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Filtrar Nome</mat-label>
+                <input matInput (keyup)="aplicarFiltro($event)" placeholder="Digite para filtrar">
+                <mat-icon matSuffix>search</mat-icon>
+              </mat-form-field>
+            </div>
+
+            <!-- Botões -->
+            <div class="col-md-2">
+              <button mat-stroked-button color="accent" (click)="limparFiltros()" class="btn-outline">
+                <mat-icon>clear_all</mat-icon>
+                Limpar Filtros
+              </button>
+            </div>
+
+            <div class="col-md-2">
+              <button mat-stroked-button color="primary" (click)="recarregarDados()" class="btn-reload">
+                <mat-icon>refresh</mat-icon>
+                Recarregar
+              </button>
+            </div>
+
+            <div class="col-md-2">
+              <button mat-raised-button color="primary" [routerLink]="['/chamados/cadastro-chamado']">
+                <mat-icon>add</mat-icon>
+                Novo Chamado
+              </button>   
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card> <!-- Fecha o mat-card interno de filtros -->
+
+      <div class="container">          
+        <!-- Tabela -->
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+          <!-- Colunas da tabela -->
+          <ng-container matColumnDef="chamado_Id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticket </th>
+            <td mat-cell *matCellDef="let chamado"> {{chamado.chamado_Id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="cliente_Id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Empresa </th>
+            <td mat-cell *matCellDef="let chamado"> {{chamado.cliente_Id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="data_Inclusao">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Abertura </th>
+            <td mat-cell *matCellDef="let chamado"> {{chamado.data_Inclusao | date:'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Título </th>
+            <td mat-cell *matCellDef="let chamado"> {{chamado.titulo}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="usuario_Inclusao">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuário Abertura</th>
+            <td mat-cell *matCellDef="let chamado"> {{chamado.usuario_Inclusao}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let chamado"> {{getStatus(chamado.status)}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Setor </th>
+            <td mat-cell *matCellDef="let chamado"> {{getCargoEquipe(chamado.tipo)}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="funcionario_Id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Funcionário </th>
+            <td mat-cell *matCellDef="let chamado"> {{chamado.funcionario_Id}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row 
+              *matRowDef="let row; columns: displayedColumns;"
+              [routerLink]="['/chamados/detalhes-chamados', row.chamado_Id]"
+              [class.selected]="isSelected(row)"
+              style="cursor: pointer;"
+              (mouseover)="onMouseOver($event)"
+              (mouseout)="onMouseOut($event)">
+          </tr>
+        </table>
+
+        <!-- Paginação -->
+        <mat-paginator [pageSize]="30" [pageSizeOptions]="[ 10, 30, 50]" showFirstLastButtons></mat-paginator>
+      </div>
+
+    </mat-card-content> <!-- Fecha o mat-card-content do card principal -->
+  </mat-card> <!-- Fecha o mat-card principal -->
+</div>
