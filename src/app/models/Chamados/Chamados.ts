@@ -1,0 +1,43 @@
+import { Data } from "@angular/router";
+
+export interface Chamados{
+ chamado_Id:number;
+ cliente_Id:String;
+ contrato_Id:string;
+ data_Inclusao:Date;
+ usuario_Inclusao:string;
+ data_Previsao:Date;
+ tipo:string;
+ status:string;
+ funcionario_Id?:string;
+ host:string;
+ data_Ultima_Atualizacao:Date;
+ usuario_Email_Id:Date;
+ data_Fechamento:Date;
+ data_Reabertura:Date;
+ titulo:string;
+ departamento_id?:string;
+ produto_Id?:string;
+ valor:number;
+ qtde_Horas:number;
+ oorcamento:number;
+ valor_Desconto:number;
+ valor_Total:number;
+ usuario_Fechamento?:string;
+ data_Aprovacao_Orcamento:Date;
+ usuario_Aprovacao_Orcamento?:string;
+ usuario_Reprovacao_Orcamento?:string;
+ data_Reprovacao_Orcamento:Date;
+ nivel_Prioridade?:string;
+ versao_Id?:string;
+ se_Faturado?:string;
+ fatura_Id?:string;
+ tipo_Faturamento_Id?:string;
+ prioridade_Id?:string;
+ data_Inicio_Tratativa:Date;
+ data_Final_Tratativa:Date;
+ data_Transferencia_Prioridade:Date;
+ executor_id?:string;
+ data_Previsao_Interno:Date;
+ id_Email_Monitoramento?:string;
+}

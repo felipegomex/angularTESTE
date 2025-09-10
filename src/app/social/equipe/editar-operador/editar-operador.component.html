@@ -1,0 +1,81 @@
+<div class="container" *ngIf="!loading; else loadingTemplate">
+  <div class="header">
+    <h2>Editar Operador</h2>
+    <br><br><br>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <form [formGroup]="operadorForm" (ngSubmit)="onSubmit()" *ngIf="operador">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>ID do Operador</mat-label>
+      <input matInput formControlName="operador_ID" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" required>
+      <mat-error *ngIf="operadorForm.get('nome')?.hasError('required')">
+        Nome é obrigatório
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="senha" type="password" required>
+      <mat-error *ngIf="operadorForm.get('senha')?.hasError('required')">
+        Senha é obrigatório
+      </mat-error>
+    </mat-form-field>
+<br>
+    <mat-form-field appearance="outline" class="w-800">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" required>
+      <mat-error *ngIf="operadorForm.get('email')?.hasError('required')">
+        Email é obrigatório
+      </mat-error>
+      <mat-error *ngIf="operadorForm.get('email')?.hasError('email')">
+        Email inválido
+      </mat-error>
+    </mat-form-field>
+
+<br>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Setor</mat-label>
+      <mat-select formControlName="perfil_Id">
+            @for(option of perfil; track option.value) 
+            { <mat-option [value]="option.value">{{ option.viewValue  }}</mat-option>}
+      </mat-select>
+    </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Administrador</mat-label>
+      <mat-select formControlName="se_Admin">
+          @for(option of admin; track option.value) {
+            <mat-option [value]="option.value">{{ option.viewValue }}</mat-option>}
+      </mat-select>
+  </mat-form-field>
+   <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Ativo</mat-label>
+      <mat-select formControlName="se_Ativo">
+          @for(option of ativo; track option.value) {
+            <mat-option [value]="option.value">{{ option.viewValue }}</mat-option>}
+      </mat-select>
+  </mat-form-field>
+
+    <div class="actions">
+      <button mat-stroked-button type="button" (click)="cancelar()">Voltar</button>
+      <button mat-stroked-button color="warn" (click)="deletarOperador()">Deletar Operador</button>
+      <button  mat-stroked-button color="success" type="submit">Salvar Alterações</button>
+    </div>
+  </form>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+    <p>Carregando operador...</p>
+  </div>
+</ng-template>

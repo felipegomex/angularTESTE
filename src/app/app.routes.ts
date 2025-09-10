@@ -31,6 +31,26 @@ export const routes: Routes = [
       },
 
       {
+        path: 'chamados', // Nova rota
+        component: ChamadosComponent, // Componente da página de chamados
+      },
+
+      {
+        path: 'chamados', // Nova rota
+        component: ChamadosComponent, // Componente da página de chamados
+      },
+
+      {
+        path: 'chamados', // Nova rota
+        component: ChamadosComponent, // Componente da página de chamados
+      },
+
+      {
+        path: 'chamados', // Nova rota
+        component: ChamadosComponent, // Componente da página de chamados
+      },
+
+      {
         path: 'ui-components',
         loadChildren: () =>
           import('./pages/ui-components/ui-components.routes').then(
@@ -55,8 +75,12 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./social/social.routes').then((m) => m.SocialRoutes),
       },
-
-       {
+      {
+        path: 'chamados',
+        loadChildren: () =>
+          import('./components/chamados/chamados.routes').then((m) => m.ChamadosRoutes),
+      },
+      {
         path: 'jca',
         loadChildren: () =>
           import('./jca/jca.routes').then((m) => m.JcaRoutes),
