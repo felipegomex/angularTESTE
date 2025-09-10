@@ -1,63 +1,70 @@
 <div class="container">
-  <mat-card class="card-container">
+  <mat-card>
     <mat-card-header>
-      <mat-card-title class="title">Acessos Clientes</mat-card-title>
+      <mat-card-title>Disposição de Servidores</mat-card-title>
     </mat-card-header>
-
     <mat-card-content>
-      <div class="table-container">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-          <!-- Coluna Empresa -->
-          <ng-container matColumnDef="empresa">
-            <th mat-header-cell *matHeaderCellDef>Empresa</th>
-            <td mat-cell *matCellDef="let item">
-              <div class="empresa-cell">
-                <mat-icon class="company-icon">business</mat-icon>
-                <span class="empresa-name">{{item.empresa}}</span>
-              </div>
-            </td>
-          </ng-container>
 
-          <!-- Coluna Licenças -->
-          <ng-container matColumnDef="licencas">
-            <th mat-header-cell *matHeaderCellDef>Qtde Licenças</th>
-            <td mat-cell *matCellDef="let item">
-              <div class="licenca-badge">
-                {{item.qtdeLicencas}}
-              </div>
-            </td>
-          </ng-container>
+      <!-- Loop Grupos -->
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let grupo of grupos">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ grupo.grupo }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
 
-     
+          <!-- Loop Empresas -->
+          <div *ngFor="let empresa of grupo.empresas">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ empresa.nome }} - ({{ empresa.localizacao }})
+                </mat-panel-title>
+              </mat-expansion-panel-header>
 
-          <!-- Coluna Ações -->
-          <ng-container matColumnDef="acoes">
-            <th mat-header-cell *matHeaderCellDef>Ações</th>
-            <td mat-cell *matCellDef="let item">
-              <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item>
-                  <mat-icon>visibility</mat-icon>
-                  <span>Visualizar</span>
-                </button>
-                <button mat-menu-item>
-                  <mat-icon>edit</mat-icon>
-                  <span>Editar</span>
-                </button>
-                <button mat-menu-item>
-                  <mat-icon>delete</mat-icon>
-                  <span>Remover</span>
-                </button>
-              </mat-menu>
-            </td>
-          </ng-container>
+              <!-- Loop Servidores -->
+              <table mat-table [dataSource]="empresa.servidores" class="mat-elevation-z2">
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-      </div>
+                <!-- Servidor -->
+                <ng-container matColumnDef="servidor">
+                  <th mat-header-cell *matHeaderCellDef>Servidor</th>
+                  <td mat-cell *matCellDef="let s">{{ s.ipServidor }}</td>
+                </ng-container>
+
+                <!-- Carteiras -->
+                <ng-container matColumnDef="carteiras">
+                  <th mat-header-cell *matHeaderCellDef>Carteiras</th>
+                  <td mat-cell *matCellDef="let s">{{ s.carteiras.join(', ') }}</td>
+                </ng-container>
+
+                <!-- IIS -->
+                <ng-container matColumnDef="iis">
+                  <th mat-header-cell *matHeaderCellDef>IIS</th>
+                  <td mat-cell *matCellDef="let s">{{ s.iis }}</td>
+                </ng-container>
+
+                <!-- Versão -->
+                <ng-container matColumnDef="versao">
+                  <th mat-header-cell *matHeaderCellDef>Versão Actyonweb</th>
+                  <td mat-cell *matCellDef="let s">{{ s.versaoActyonweb }}</td>
+                </ng-container>
+
+                <!-- HML -->
+                <ng-container matColumnDef="hml">
+                  <th mat-header-cell *matHeaderCellDef>Actyonweb HML</th>
+                  <td mat-cell *matCellDef="let s">{{ s.actyonwebHml || '-' }}</td>
+                </ng-container>
+
+                <!-- Renderiza -->
+                <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
+                <tr mat-row *matRowDef="let row; columns: colunasExibidas;"></tr>
+              </table>
+            </mat-expansion-panel>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+
     </mat-card-content>
   </mat-card>
 </div>

@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClientesService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3000/clientes'; // rota correta
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getClientes(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);

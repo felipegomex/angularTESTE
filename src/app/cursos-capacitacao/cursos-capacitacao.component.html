@@ -5,11 +5,12 @@
   <mat-card-content>
     <!-- Cabeçalho -->
     <div class="text-center mb-4 p-4 bg-primary text-white rounded shadow">
+      <p></p>
       <h1 class="display-5">Cursos de Capacitação - JCA Soluções</h1>
       <p class="lead">Recursos educacionais organizados por área de conhecimento</p>
     </div>
 
-    <!-- Botões de Ação -->
+    <!-- Botões de Ação 
     <div class="m-t-12 mb-4">
       <button mat-stroked-button color="primary" class="m-r-8">
         <mat-icon>edit</mat-icon> Editar
@@ -21,7 +22,8 @@
         <mat-icon>delete</mat-icon> Excluir
       </button>
     </div>
-
+    -->
+    
     <!-- Seção 1: Plataformas Gratuitas -->
     <mat-card class="mb-4">
       <mat-card-header>
@@ -29,7 +31,7 @@
           <mat-icon class="mr-2">school</mat-icon>
           Plataformas Gratuitas de Ensino
         </mat-card-title>
-        <mat-card-subtitle>Acesso gratuito a cursos de qualidade</mat-card-subtitle>
+        <mat-card-subtitle></mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <div class="row">
@@ -41,8 +43,6 @@
               <mat-card-content>
                 <p class="curso-descricao">{{ plataforma.descricao }}</p>
                 <div *ngIf="plataforma.observacao" class="alert alert-warning">
-                  <mat-icon>warning</mat-icon>
-                  {{ plataforma.observacao }}
                 </div>
               </mat-card-content>
               <mat-card-actions>
@@ -135,8 +135,6 @@
         </div>
         
         <div class="alert alert-info">
-          <mat-icon>info</mat-icon>
-          <strong>Curso Guilherme:</strong> Buscar informações junto ao instrutor
         </div>
       </mat-card-content>
     </mat-card>
@@ -267,9 +265,7 @@
               <div matListItemTitle>Agile Project Management</div>
               <div matListItemLine>Plataforma: Coursera (Google)</div>
               <button mat-raised-button color="primary" matListItemMeta 
-                      (click)="abrirLink('https://lnkd.in/dYV_w849')">
-                Acessar
-              </button>
+                      (click)="abrirLink('https://lnkd.in/dYV_w849')">Acessar</button>
             </mat-list-item>
           </mat-list>
         </div>
