@@ -20,7 +20,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Monitoramento',
     iconName: 'activity',
-    route: '/monitoramento-importacoes',
+    // route removed: monitoramento-importacoes
   },
 
   {

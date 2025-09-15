@@ -1,17 +1,17 @@
 
-<app-topstrip></app-topstrip>
+<app-topstrip (toggleMobileNav)="onToggleMobileNav()"></app-topstrip>
 <mat-sidenav-container class="mainWrapper blue_theme light-theme" autosize autoFocus dir="ltr">
   <!-- ============================================================== -->
   <!-- Vertical Sidebar -->
   <!-- ============================================================== -->
-  <mat-sidenav #leftsidenav [mode]="isOver ? 'over' : 'side'" [opened]="!isOver"
+  <mat-sidenav #leftsidenav [mode]="isOver ? 'over' : 'side'" [opened]="options.sidenavOpened"
     (openedChange)="onSidenavOpenedChange($event)" (closedStart)="onSidenavClosedStart()" class="sidebarNav">
     <div class="flex-layout">
-      <app-sidebar (toggleMobileNav)="sidenav.toggle()" [showToggle]="!isOver"></app-sidebar>
+      <app-sidebar (toggleMobileNav)="onToggleMobileNav()" [showToggle]="!isOver"></app-sidebar>
       <ng-scrollbar class="position-relative" style="height: 100%">
         <mat-nav-list class="sidebar-list">
           @for(item of navItems; track item) {
-          <app-nav-item [item]="item" (notify)="sidenav.toggle()">
+          <app-nav-item [item]="item" (notify)="onNavItemClick()">
           </app-nav-item>
           }
         </mat-nav-list>
@@ -27,9 +27,16 @@
     <!-- VerticalHeader -->
     <!-- ============================================================== -->
     
-    <app-header [showToggle]="!isOver" (toggleMobileNav)="sidenav.toggle()"></app-header>
+    <app-header [showToggle]="!isOver" (toggleMobileNav)="onToggleMobileNav()"></app-header>
     
     <main class="pageWrapper maxWidth">
+      @if (!options.sidenavOpened) {
+        <button mat-fab color="primary" aria-label="Abrir menu"
+                (click)="onToggleMobileNav()"
+                style="position: fixed; top: 12px; left: 12px; z-index: 1100;">
+          <i-tabler name="menu"></i-tabler>
+        </button>
+      }
       <!-- ============================================================== -->
       <!-- Outlet -->
       <!-- ============================================================== -->

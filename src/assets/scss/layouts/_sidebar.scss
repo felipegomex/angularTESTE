@@ -1,4 +1,5 @@
 @use "../variables" as *;
+@use "./transitions" as *;
 
 .mat-drawer.sidebarNav {
   width: $sidenav-desktop;

@@ -120,20 +120,23 @@ export class FullComponent implements OnInit {
     //this.settings.setOptions(this.options);
   }
 
-  
-toggleSidenav(): void {
-  this.options.sidenavOpened = !this.options.sidenavOpened;
-  this.settings.setOptions(this.options); // Persiste o estado se necessário
-  
-  // Se quiser forçar a atualização imediata (opcional)
-  if (this.sidenav) {
+  onToggleMobileNav(): void {
+    this.options.sidenavOpened = !this.options.sidenavOpened;
+    this.settings.setOptions(this.options);
     if (this.options.sidenavOpened) {
-      this.sidenav.open();
+      this.sidenav?.open();
     } else {
-      this.sidenav.close();
+      this.sidenav?.close();
     }
   }
-}
+
+  onNavItemClick(): void {
+    if (this.isOver) {
+      this.options.sidenavOpened = false;
+      this.settings.setOptions(this.options);
+      this.sidenav?.close();
+    }
+  }
 
 
 }
