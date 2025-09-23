@@ -3,5 +3,15 @@ export interface Response<T>{
   id: any;
   dados: T;
   mensagem: string;
-  status: boolean
+  status: boolean;
+}
+
+export interface RespostaPaginada<T> {
+  itens: T[];
+  paginaAtual: number;
+  totalPaginas: number;
+  tamanhoPagina: number;
+  totalItens: number;
+  temPaginaAnterior: boolean;
+  temProximaPagina: boolean;
 }

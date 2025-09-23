@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
-import { OperadorService } from 'src/app/social/equipe/operador.service'; // Importando os serviços da API
 import { CriarOperador } from 'src/app/models/criarOperador'; // Importando o modelo com as propriedades
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';

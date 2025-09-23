@@ -13,7 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MaterialModule } from 'src/app/material.module';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { Router, RouterModule } from '@angular/router';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Chamados } from 'src/app/models/Chamados/Chamados';
 import { ChamadoService } from './chamados.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -46,6 +46,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   providers: [provideNativeDateAdapter()], 
 })
 export class ChamadosComponent implements OnInit, AfterViewInit {
+
 displayedColumns: string[] = [
     'chamado_Id',
     'cliente_Id',
@@ -69,6 +70,12 @@ displayedColumns: string[] = [
   filtroDataFechamentoInicio: Date | null = null;
   filtroDataFechamentoFim: Date | null = null;
 
+  // Variáveis de paginação
+  totalItens = 0;
+  pageSize = 200;
+  pageSizeOptions = [ 10, 30, 50];
+  currentPage = 0;
+  isLoading = false;
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -85,34 +92,38 @@ displayedColumns: string[] = [
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
       this.configurarDataSource();
-        this.aplicarFiltros();
-
-    });
   }
 
-  configurarDataSource(): void {
-    if (this.sort) {
-      this.dataSource.sort = this.sort;
-      
-      const initialSort: Sort = { 
-        active: 'chamado_Id', 
-        direction: 'desc' 
-      };
-
-      this.sort.active = initialSort.active;
-      this.sort.direction = initialSort.direction;
-      this.sort.sortChange.emit(initialSort);
-    }
-
-    if (this.paginator) {
-      this.dataSource.paginator = this.paginator;
-    }
-
-    // Força a detecção de mudanças
-    this.cdRef.detectChanges();
+  onPageChange(event: PageEvent) {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.carregarChamados();
   }
+
+configurarDataSource(): void {
+  if (this.sort) {
+    this.dataSource.sort = this.sort;
+    
+    const initialSort: Sort = { 
+      active: 'chamado_Id', 
+      direction: 'desc' 
+    };
+
+    this.sort.active = initialSort.active;
+    this.sort.direction = initialSort.direction;
+    this.sort.sortChange.emit(initialSort);
+  }
+
+  if (this.paginator) {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  // Força a atualização da visualização
+  this.cdRef.detectChanges();
+  
+  console.log('DataSource configurado configurar data source:', this.dataSource.data.length, 'itens');
+}
 
   selecionarChamado(chamado: any): void {
     this.chamadoSelecionado = chamado;
@@ -151,17 +162,31 @@ displayedColumns: string[] = [
     return this.chamadoSelecionado && this.chamadoSelecionado.chamado_Id === chamado.chamado_Id;
   }
 
-  carregarChamados(): void {
-    this.serviceChamado.GetChamados().subscribe(response => {
-      this.chamadosGeral = response.dados;
-      this.dataSource.data = response.dados;
+carregarChamados(): void {
+  this.isLoading = true;
+  
+  const pag = this.currentPage + 1;
+  const qtde = this.pageSize;
+  
+  this.serviceChamado.GetChamados(qtde, pag).subscribe({
+    next: (response) => {
+      if (response.status && response.dados) {
+        this.dataSource.data = response.dados.itens;
+        this.chamadosGeral = response.dados.itens;
+        this.totalItens = response.dados.totalItens;
+      }
+      this.isLoading = false;
       
-      // Reconfigura o dataSource após carregar os dados
       setTimeout(() => {
         this.configurarDataSource();
       });
-    });
-  }
+    },
+    error: (error) => {
+      console.error('Erro ao carregar chamados:', error);
+      this.isLoading = false;
+    }
+  });
+}
 
   getStatus(status: string): string {
     return status === 'A' ? 'Aberto' : 'Fechado';
@@ -190,7 +215,7 @@ displayedColumns: string[] = [
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-    aplicarFiltros(): void {
+  aplicarFiltros(): void {
     this.chamadosFiltrados = this.chamadosGeral.filter(chamado => {
       // Filtro por Data de Inclusão
       if (this.filtroDataAberturaInicio || this.filtroDataAberturaFim) {
@@ -209,7 +234,7 @@ displayedColumns: string[] = [
         }
       }
 
-      // Filtro por Data de Fechamento ← CORRIGIDO
+      // Filtro por Data de Fechamento 
       if (this.filtroDataFechamentoInicio || this.filtroDataFechamentoFim) {
         // Verifica se o chamado tem data de fechamento
         if (!chamado.data_Fechamento) return false;
@@ -228,8 +253,20 @@ displayedColumns: string[] = [
           if (dataFechamento > dataFim) return false;
         }
       }
+     // Filtro por Status
+      if (this.filtroStatus && chamado.status !== this.filtroStatus) {
+        return false;
+      }
 
-      // ... (resto dos filtros)
+      // Filtro por Setor
+      if (this.filtroSetor) {
+        if (this.filtroSetor === 'null') {
+          if (chamado.tipo !== null) return false;
+        } else {
+          if (chamado.tipo !== this.filtroSetor) return false;
+        }
+      }
+
       return true;
     });
 

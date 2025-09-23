@@ -1,1 +1,66 @@
-<p>cadastro-chamado works!</p>
+<mat-card class="cardWithShadow theme-card">
+
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Formulário Chamado</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+
+    <form>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label class="f-w-600 m-b-8 d-block">Título - Chamado</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput  type="text" placeholder="Título do chamado." />
+          </mat-form-field>
+        </div>
+
+
+        <div class="col-lg-6">
+          <!-- input -->
+          <mat-label class="f-w-600 m-b-8 d-block">Mensagem - Chamado</mat-label>
+          <mat-form-field appearance="outline" class="w-100" color="primary">
+            <input matInput type="text" placeholder="Coloque aqui a mensagem do chamado." />
+          </mat-form-field>
+       </div>
+
+
+       <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Setor</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-select [(value)]="setorSelecionado">
+              @for(option of setor; track option.value) {
+              <mat-option [value]="option.value">{{
+                option.viewValue
+                }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+         <div class="col-lg-6">
+          <mat-label class="f-w-600 m-b-8 d-block">Produto</mat-label>
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-select [(value)]="produtoSelecionado">
+              @for(option of produto; track option.value) {
+              <mat-option [value]="option.value">{{
+                option.viewValue
+                }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+      <div class="m-t-12">
+        <button mat-flat-button color="primary" class="m-r-8">Publicar Chamado</button>
+        <button mat-stroked-button color="warn">Limpar Campos</button>
+      </div>
+
+      </div>
+    </form>
+
+  </mat-card-content>
+
+</mat-card>

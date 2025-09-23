@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { getApiUrl } from 'src/environments/environment.development';
 import { Chamados} from 'src/app/models/Chamados/Chamados'; //Importando minha interface Chamados, ela vai orientar meu código quais colunas serão exibidas.
 import { ChamadosItem } from 'src/app/models/Chamados/ChamadosItem'; //Importando minha interface ChamadosItem, ela vai orientar meu código quais colunas serão exibidas.
-import { Response } from 'src/app/models/Response';
+import { Response, RespostaPaginada } from 'src/app/models/Response';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +14,14 @@ export class ChamadoService {
   constructor(private http : HttpClient) { }
 
 
-  GetChamados(): Observable<Response<Chamados[]>>{
-    return this.http.get<Response<Chamados[]>>(this.url);
+  // GetChamados(): Observable<Response<Chamados[]>>{
+  //   return this.http.get<Response<Chamados[]>>(this.url);
+  // }
+
+    GetChamados(qtde?: number, pag?: number): Observable<Response<RespostaPaginada<Chamados>>> {
+    return this.http.get<Response<RespostaPaginada<Chamados>>>(`${this.url}?pag=${pag}&qtde=${qtde}`);
   }
-  
+
   GetChamadoById(chamado_id: number): Observable<Response<Chamados[]>>{
     return this.http.get<Response<Chamados[]>>(`${this.url}/ChamadoById?Chamado_Id=${chamado_id}`);
   }

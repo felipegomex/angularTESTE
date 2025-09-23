@@ -45,11 +45,6 @@ export const navItems: NavItem[] = [
     route: '/contra-senha',
   },
 
-  {
-    displayName: 'Formulário - Programação',
-    iconName: 'list-details',
-    route: '/formulario-programacao',
-  },
 
   {
     navCap: 'Documentações',

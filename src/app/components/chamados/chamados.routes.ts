@@ -5,7 +5,7 @@ import { DetalhesChamadoComponent } from './detalhes-chamado/detalhes-chamado.co
 
 export const ChamadosRoutes: Routes = [
   {
-    path: 'cadastro-chamados', 
+    path: 'cadastro-chamado', 
     component: CadastroChamadoComponent,
     data: { title: 'Cadastrar Chamado' },
   },
